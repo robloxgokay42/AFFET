@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const successMessage = document.createElement('h1');
             successMessage.id = 'success-message';
-            successMessage.textContent = 'Seni Seviyorum Teyzeciğim! ❤️';
+            successMessage.textContent = 'eyyvallah';
             mainContent.appendChild(successMessage);
             successMessage.classList.add('fade-in', 'bounce-in'); // Animasyonları ekle
 
