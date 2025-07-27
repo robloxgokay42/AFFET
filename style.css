@@ -1,0 +1,227 @@
+/* Genel Ayarlar */
+:root {
+    --primary-color: #ff69b4; /* Sıcak Pembe */
+    --secondary-color: #8a2be2; /* Mor */
+    --text-color: #333;
+    --light-bg: #fdf2f7; /* Çok açık pembe */
+    --button-green: #28a745;
+    --button-red: #dc3545;
+    --border-radius: 15px;
+    --shadow-light: rgba(0, 0, 0, 0.2);
+    --shadow-dark: rgba(0, 0, 0, 0.4);
+}
+
+body {
+    margin: 0;
+    overflow: hidden; /* Sayfanın kaydırılmasını engelle */
+    background: linear-gradient(135deg, #fce4ec, #f8bbd0); /* Hafif pembe gradient */
+    font-family: 'Quicksand', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    color: var(--text-color);
+    text-align: center;
+    user-select: none; /* Metin seçmeyi engelle */
+}
+
+/* Arka plan efekti (hafif parıltı) */
+.background-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    opacity: 0.7;
+    animation: background-glow 10s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes background-glow {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+
+#main-content {
+    background-color: rgba(255, 255, 255, 0.9); /* Yarı şeffaf beyaz kutu */
+    padding: 40px 60px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 15px 30px var(--shadow-dark);
+    max-width: 800px;
+    width: 90%;
+    z-index: 10;
+    position: relative;
+    animation: pop-in 0.8s ease-out;
+}
+
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+#peace-message {
+    font-family: 'Pacifico', cursive; /* El yazısı fontu */
+    font-size: 3.5em;
+    color: var(--secondary-color); /* Mor tonu */
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    line-height: 1.2;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap; /* Mobil uyumluluk */
+}
+
+.action-button {
+    padding: 18px 35px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    box-shadow: 0 8px 15px var(--shadow-light);
+    text-transform: uppercase;
+}
+
+.action-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px var(--shadow-dark);
+}
+
+.action-button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px var(--shadow-light);
+}
+
+.green-button {
+    background: linear-gradient(45deg, #4CAF50, #8BC34A);
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.green-button:hover {
+    background: linear-gradient(45deg, #8BC34A, #4CAF50);
+}
+
+.red-button {
+    background: linear-gradient(45deg, #FF6347, #FF4500); /* Kırmızımsı turuncu */
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.red-button:hover {
+    background: linear-gradient(45deg, #FF4500, #FF6347);
+}
+
+/* Küçük butonun küçülme ve yok olma animasyonu */
+.shrink-button {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+}
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Konfeti konteyneri */
+#confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Tıklama olaylarını engelle */
+    overflow: hidden;
+    z-index: 20;
+}
+
+/* Konfeti parçacığı */
+.confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #FFD700; /* Altın sarısı */
+    border-radius: 50%;
+    opacity: 0;
+    animation: confetti-fall 2s ease-out forwards;
+    will-change: transform, opacity;
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* Başarı sonrası mesaj */
+#success-message {
+    font-family: 'Pacifico', cursive;
+    font-size: 4.5em;
+    color: var(--primary-color); /* Sıcak pembe */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3), 0 0 15px rgba(255, 105, 180, 0.7);
+    margin-top: 30px;
+    animation: bounce-in 0.8s ease-out forwards;
+}
+
+@keyframes bounce-in {
+    0% { transform: scale(0.5); opacity: 0; }
+    50% { transform: scale(1.1); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+/* Responsive Ayarlamalar */
+@media (max-width: 768px) {
+    #main-content {
+        padding: 30px 40px;
+    }
+    #peace-message {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+    .action-button {
+        font-size: 1.2em;
+        padding: 15px 30px;
+    }
+    #success-message {
+        font-size: 3.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    #main-content {
+        padding: 20px 25px;
+    }
+    #peace-message {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .action-button {
+        font-size: 1em;
+        padding: 12px 25px;
+        width: 100%; /* Mobil cihazlarda butonları tam genişlik yap */
+    }
+    .button-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+    #success-message {
+        font-size: 2.8em;
+    }
+}
